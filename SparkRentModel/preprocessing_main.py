@@ -79,7 +79,7 @@ if __name__ == '__main__':
 
     start = time.time()
 
-    df = spark.read.csv('/root/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
+    df = spark.read.csv('/user/limeng/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
     df = df.drop('bus')
     df = df.drop('_c0')
     df = df.drop('id')
