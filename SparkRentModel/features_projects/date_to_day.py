@@ -36,7 +36,9 @@ def dateToDay(s):
 
 def dateToDayTansform(df):
     # 爬虫时间时爬虫程序给的，一般都会有，只是以防万一，这里就直接将没有的值所在的行删除
-    df = df.dropna(subset=['crawl_time'])
+    df = df.filter(df['crawl_time'].isNotNull())
+    df = df.filter(df['crawl_time'] != 'NULL')
+
     from pyspark.sql.functions import udf
 
     date_transform = udf(dateToDay,FloatType())

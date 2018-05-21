@@ -7,16 +7,14 @@
 @time: 2018/05/{DAY}
 """
 
-import pandas as pd
-from features_projects.one_hot_encoding import *
-from features_projects.facilities_transform import *
+from data_preprocessing.one_hot_encoding import *
+from data_preprocessing.facilities_transform import *
 from data_preprocessing.null_fill import NullAndDuplications
 
 from data_preprocessing.data_uniformity import dataUniform
-from features_projects.derive_features import *
+from data_preprocessing.derive_features import *
 from data_preprocessing.check_null_rate import checkNullRate
 from data_preprocessing.outlier import outlierValue
-from pyspark.mllib.regression import LabeledPoint
 
 """
     processing_main函数中数据处理顺序如下：
@@ -69,11 +67,11 @@ if __name__ == '__main__':
     from pyspark.sql import SparkSession
     import os
 
-    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
+    #os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
     sparkConf = SparkConf() \
         .setAppName('pyspark rentmodel') \
-        .setMaster('local[*]')
+        # .setMaster('local[*]')
     sc = SparkContext.getOrCreate(sparkConf)
 
     sc.setLogLevel('WARN')
@@ -85,12 +83,14 @@ if __name__ == '__main__':
     df = df.drop('bus')
     df = df.drop('_c0')
     df = df.drop('id')
+    df = df.drop('crawl_time')
 
     df = processingMain(df)
 
-    # df.write.csv('/root/processed',header=True)
+    # df.write.csv('/user/limeng/processed',header=True)
+    temp_df = df.select('price', 'area', 'room_num', 'hall_num', 'toilet_num', 'floor', 'floor_total')
 
-    df.show(400,truncate=False)
+    temp_df.show(truncate = False)
 
     spark.stop()
     sc.stop()

@@ -14,66 +14,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="preprocessing_main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="preprocessing_main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preprocessing_main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+            <state relative-caret-position="559">
+              <caret line="97" column="21" lean-forward="true" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
               <folding>
-                <element signature="e#118#137#0" expanded="true" />
+                <element signature="e#118#167#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="configing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resource/configing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="28" column="48" lean-forward="false" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="one_hot_encoding.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features_projects/one_hot_encoding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data_uniformity.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_preprocessing/data_uniformity.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="174" column="47" lean-forward="true" selection-start-line="174" selection-start-column="47" selection-end-line="174" selection-end-column="47" />
-              <folding>
-                <element signature="e#199#242#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="facilities_transform.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features_projects/facilities_transform.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-924">
-              <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="udf_methods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_preprocessing/udf_methods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -81,8 +29,8 @@
       <file leaf-file-name="date_to_day.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features_projects/date_to_day.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+            <state relative-caret-position="119">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#112#131#0" expanded="true" />
               </folding>
@@ -90,36 +38,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="derive_features.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/features_projects/derive_features.py">
+      <file leaf-file-name="null_fill.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_preprocessing/null_fill.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="113" column="44" lean-forward="true" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
-              <folding>
-                <element signature="e#116#135#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_pydev_execfile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="-84">
+              <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="19" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="importance.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/algorithms/importance.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding>
-                <element signature="e#94#113#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +70,7 @@
       <find>nullDataSplit</find>
       <find>features_projects</find>
       <find>udf</find>
+      <find>dateToDayTansform</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -166,14 +91,14 @@
         <option value="$PROJECT_DIR$/feature_project/one_hot_encoding.py" />
         <option value="$PROJECT_DIR$/algorithms/spark_algorithms.py" />
         <option value="$PROJECT_DIR$/algorithms/importance.py" />
-        <option value="$PROJECT_DIR$/preprocessing_main.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/udf_methods.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/null_fill.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/outlier.py" />
         <option value="$PROJECT_DIR$/data_preprocessing/data_uniformity.py" />
         <option value="$PROJECT_DIR$/features_projects/facilities_transform.py" />
-        <option value="$PROJECT_DIR$/features_projects/date_to_day.py" />
         <option value="$PROJECT_DIR$/features_projects/derive_features.py" />
+        <option value="$PROJECT_DIR$/features_projects/date_to_day.py" />
+        <option value="$PROJECT_DIR$/preprocessing_main.py" />
       </list>
     </option>
   </component>
@@ -198,14 +123,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="SparkRentModel" type="b2602c69:ProjectViewProjectNode" />
               <item name="SparkRentModel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SparkRentModel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SparkRentModel" type="462c0819:PsiDirectoryNode" />
+              <item name="data_preprocessing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SparkRentModel" type="b2602c69:ProjectViewProjectNode" />
@@ -236,13 +166,15 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/features_projects" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data_preprocessing" />
+      <recent name="$PROJECT_DIR$/features_projects" />
+      <recent name="$PROJECT_DIR$/comm_poi_clean" />
       <recent name="$PROJECT_DIR$/resource" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="D:\pyCharmSpace\DataCleanPython3V2\SparkRentModel\resource" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/features_projects" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -257,7 +189,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.data_uniformity">
+  <component name="RunManager" selected="Python.preprocessing_main">
     <configuration name="data_uniformity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -271,6 +203,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SparkRentModel" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_preprocessing/data_uniformity.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="date_to_day" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/features_projects" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SparkRentModel" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/features_projects/date_to_day.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -330,38 +280,20 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="sparktest" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SparkRentModel" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sparktest.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.preprocessing_main" />
-      <item index="1" class="java.lang.String" itemvalue="Python.sparktest" />
-      <item index="2" class="java.lang.String" itemvalue="Python.spark_algorithms" />
-      <item index="3" class="java.lang.String" itemvalue="Python.null_fill" />
-      <item index="4" class="java.lang.String" itemvalue="Python.data_uniformity" />
+      <item index="1" class="java.lang.String" itemvalue="Python.spark_algorithms" />
+      <item index="2" class="java.lang.String" itemvalue="Python.null_fill" />
+      <item index="3" class="java.lang.String" itemvalue="Python.data_uniformity" />
+      <item index="4" class="java.lang.String" itemvalue="Python.date_to_day" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.data_uniformity" />
-        <item index="1" class="java.lang.String" itemvalue="Python.preprocessing_main" />
-        <item index="2" class="java.lang.String" itemvalue="Python.null_fill" />
-        <item index="3" class="java.lang.String" itemvalue="Python.spark_algorithms" />
-        <item index="4" class="java.lang.String" itemvalue="Python.sparktest" />
+        <item index="0" class="java.lang.String" itemvalue="Python.preprocessing_main" />
+        <item index="1" class="java.lang.String" itemvalue="Python.date_to_day" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data_uniformity" />
+        <item index="3" class="java.lang.String" itemvalue="Python.null_fill" />
+        <item index="4" class="java.lang.String" itemvalue="Python.spark_algorithms" />
       </list>
     </recent_temporary>
   </component>
@@ -384,11 +316,11 @@
   <component name="ToolWindowManager">
     <frame x="-59" y="43" width="1284" height="722" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14217633" sideWeight="0.49839228" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23034154" sideWeight="0.49839228" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7512605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6134454" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55630255" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21406959" sideWeight="0.5016077" order="1" side_tool="true" content_ui="tabs" />
@@ -524,9 +456,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="e#110#129#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,9 +484,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -566,7 +492,7 @@
         <state relative-caret-position="357">
           <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#94#113#0" expanded="true" />
+            <element signature="e#94#113#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -576,24 +502,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessing/null_fill.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="168" column="43" lean-forward="true" selection-start-line="168" selection-start-column="43" selection-end-line="168" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/preprocessing_main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
-          <folding>
-            <element signature="e#118#137#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -615,9 +523,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features_projects/one_hot_encoding.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/one_hot_encoding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
+        <state relative-caret-position="170">
           <caret line="10" column="43" lean-forward="false" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
           <folding />
         </state>
@@ -625,7 +533,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_preprocessing/udf_methods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
+        <state relative-caret-position="986">
           <caret line="60" column="8" lean-forward="false" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="8" />
           <folding />
         </state>
@@ -633,38 +541,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_preprocessing/data_uniformity.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="174" column="47" lean-forward="true" selection-start-line="174" selection-start-column="47" selection-end-line="174" selection-end-column="47" />
+        <state relative-caret-position="2890">
+          <caret line="174" column="47" lean-forward="false" selection-start-line="174" selection-start-column="47" selection-end-line="174" selection-end-column="47" />
           <folding>
-            <element signature="e#199#242#0" expanded="true" />
+            <element signature="e#199#242#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features_projects/facilities_transform.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/facilities_transform.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-924">
+        <state relative-caret-position="17">
           <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/derive_features.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="113" column="44" lean-forward="false" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
+          <folding>
+            <element signature="e#116#135#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/features_projects/date_to_day.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="60" column="29" lean-forward="true" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
+        <state relative-caret-position="119">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="e#112#131#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features_projects/derive_features.py">
+    <entry file="file://$PROJECT_DIR$/data_preprocessing/null_fill.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="113" column="44" lean-forward="true" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
+        <state relative-caret-position="-84">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/preprocessing_main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="97" column="21" lean-forward="true" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
           <folding>
-            <element signature="e#116#135#0" expanded="true" />
+            <element signature="e#118#167#0" expanded="true" />
           </folding>
         </state>
       </provider>
