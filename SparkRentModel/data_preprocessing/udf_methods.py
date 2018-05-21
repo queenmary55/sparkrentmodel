@@ -31,13 +31,13 @@ class UDFMethods(object):
         if s == 0:
             pass
         elif s == '低':
-            return 1
+            return float(1)
         elif s == '中':
-            return 2
+            return float(2)
         elif s == '高':
-            return 3
+            return float(3)
         else:
-            return 0
+            return float(0)
 
     @staticmethod
     def udf_decoration(s):
@@ -45,17 +45,17 @@ class UDFMethods(object):
         if s == 0:
             pass
         elif s == '毛坯':
-            return 0
+            return float(0)
         elif s == '简':
-            return 2
+            return float(2)
         elif s == '中':
-            return 3
+            return float(3)
         elif s == '精':
-            return 4
+            return float(4)
         elif s == '豪':
-            return 5
+            return float(5)
         else:
-            return 0
+            return float(0)
 
     @staticmethod
     def udf_direction(s):

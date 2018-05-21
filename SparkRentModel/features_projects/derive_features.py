@@ -12,6 +12,7 @@ import numpy as np
 
 from math_functions.math import Math
 from pyspark.sql.functions import udf
+from pyspark.sql.types import StringType,FloatType
 
 
 def div(df, col1, col2):
@@ -57,10 +58,10 @@ class DeriveFeature(object):
         div_resultIterator = iter(div_result)
 
         def udf_oneRoomArea(s):
-            return next(div_resultIterator, '-1')
+            return float(next(div_resultIterator, '-1'))
 
 
-        transf_udf = udf(udf_oneRoomArea)
+        transf_udf = udf(udf_oneRoomArea,FloatType())
         df = df.select(
             '*', transf_udf(df['area']).alias('one_room_area'))
 
@@ -72,9 +73,9 @@ class DeriveFeature(object):
         div_result = div(df, 'price', 'area')
         div_resultIterator = iter(div_result)
         def udf_oneRoomArea(s):
-            return next(div_resultIterator, '-1')
+            return float(next(div_resultIterator, '-1'))
 
-        transf_udf = udf(udf_oneRoomArea)
+        transf_udf = udf(udf_oneRoomArea,FloatType())
         df = df.select(
             '*', transf_udf(df['area']).alias('one_area_price'))
 

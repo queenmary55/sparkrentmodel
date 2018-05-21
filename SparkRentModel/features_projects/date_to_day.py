@@ -11,6 +11,7 @@ import pandas as pd
 from resource.configing import config as cf
 
 from dateutil import parser
+from pyspark.sql.types import StringType,FloatType
 
 
 """
@@ -26,7 +27,7 @@ def dateToDay(s):
         # s = time.mktime(time.strptime(s,"%Y-%m-%d %H:%M:%S"))
         s = datetime_struct.strftime('%Y-%m-%d %H:%M:%S')
         date_diff = pd.to_datetime(now_date) - pd.to_datetime(s)
-        return date_diff.days
+        return float(date_diff.days)
     except Exception as e:
         # print('input time format of origin data is error:', e)
         return s
@@ -38,7 +39,7 @@ def dateToDayTansform(df):
     df = df.dropna(subset=['crawl_time'])
     from pyspark.sql.functions import udf
 
-    date_transform = udf(dateToDay)
+    date_transform = udf(dateToDay,FloatType())
 
     df = df.select(
         '*',

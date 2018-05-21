@@ -32,6 +32,8 @@ from pyspark.mllib.regression import LabeledPoint
 
 
 def processingMain(df):
+    import sys
+    print('=======',sys.path)
     print('------------before:',df.count(),df.columns)
     df = checkNullRate(df)
     print('------------after:', df.count(), df.columns)
@@ -67,7 +69,7 @@ if __name__ == '__main__':
     from pyspark.sql import SparkSession
     import os
 
-    # os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
+    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
     sparkConf = SparkConf() \
         .setAppName('pyspark rentmodel') \
@@ -86,7 +88,7 @@ if __name__ == '__main__':
 
     df = processingMain(df)
 
-    df.write.csv('/root/processed',header=True)
+    # df.write.csv('/root/processed',header=True)
 
     df.show(400,truncate=False)
 

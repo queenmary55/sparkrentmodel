@@ -16,7 +16,7 @@ from resource.configing import config as cf
 from pyspark.sql.functions import udf
 from data_preprocessing.udf_methods import UDFMethods
 
-from pyspark.sql.types import IntegerType
+from pyspark.sql.types import StringType,FloatType
 
 
 
@@ -117,7 +117,7 @@ class FillMethods(object):
     @staticmethod
     def assignZero(df, null_processing_assignZero):
 
-        udf_assignZero = udf(UDFMethods.udf_NULL_assignZero)
+        udf_assignZero = udf(UDFMethods.udf_NULL_assignZero, StringType())
 
         df_nan = df.filter(df[null_processing_assignZero].isNull())
         df_null = df.filter(df[null_processing_assignZero] == 'NULL')
@@ -145,7 +145,7 @@ class FillMethods(object):
                 return mode_num
             else:
                 return s
-        transf_udf = udf(udf_fill_Null)
+        transf_udf = udf(udf_fill_Null,StringType())
 
         if df_nan.count() > 0:
             df = df.na.fill(mode_num, null_processing_assignMode)
@@ -207,7 +207,7 @@ class FillMethods(object):
             year_map_num_dict[k] = v
 
         # 空值的填充
-        udf_assignZero = udf(UDFMethods.udf_NULL_assignZero, IntegerType())
+        udf_assignZero = udf(UDFMethods.udf_NULL_assignZero, FloatType())
 
         df_nan = df.filter(df[null_processing_assingNumber].isNull())
         df_null = df.filter(df[null_processing_assingNumber] == 'NULL')
@@ -243,7 +243,7 @@ class FillMethods(object):
             # floor 值转换
             if null_processing_assingNumber == 'floor':
 
-                udf_floor_assingNumber = udf(UDFMethods.udf_floor)
+                udf_floor_assingNumber = udf(UDFMethods.udf_floor,FloatType())
 
                 df = df.select(
                     '*', udf_floor_assingNumber(df[null_processing_assingNumber]).alias('temp_name'))
@@ -253,7 +253,7 @@ class FillMethods(object):
             # decoration 值转换
             elif null_processing_assingNumber == 'decoration':
 
-                udf_decoration_assingNumber = udf(UDFMethods.udf_decoration)
+                udf_decoration_assingNumber = udf(UDFMethods.udf_decoration,FloatType())
 
                 df = df.select(
                     '*', udf_decoration_assingNumber(df[null_processing_assingNumber]).alias('temp_name'))
@@ -271,6 +271,9 @@ if __name__ == '__main__':
     from pyspark import SparkContext, SparkConf
     from pyspark.sql import SparkSession
     import os
+
+    import sys
+    print(sys.path)
 
     os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 

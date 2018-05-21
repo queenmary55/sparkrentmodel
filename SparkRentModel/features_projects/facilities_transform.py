@@ -10,7 +10,7 @@
 import pandas as pd
 
 from pyspark.sql.functions import udf
-from pyspark.sql.types import StructType, StringType, StructField, IntegerType
+from pyspark.sql.types import StructType, StringType, StructField, IntegerType,FloatType
 
 
 def tranFacilitiesField(df):

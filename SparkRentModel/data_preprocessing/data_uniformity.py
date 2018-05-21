@@ -17,6 +17,7 @@ from resource.configing import config as cf
 from math_functions.math import Math
 from pyspark.sql.functions import udf
 from data_preprocessing.udf_methods import UDFMethods
+from pyspark.sql.types import FloatType,StringType
 
 
 class DataUniformity(object):
@@ -25,7 +26,7 @@ class DataUniformity(object):
 
     @staticmethod
     def direction(df):
-        udf_transf = udf(UDFMethods.udf_direction)
+        udf_transf = udf(UDFMethods.udf_direction,StringType())
 
         df = df.select(
             '*', udf_transf(df['direction']).alias('temp_name'))
@@ -43,10 +44,10 @@ class DataUniformity(object):
         def udf_floor_total(s):
             s = float(s)
             if (s < 0) | (s > cf.get('uniformity_floor_total_max')):
-                return floor_total_mode
+                return float(floor_total_mode)
             else:
-                return s
-        udf_transf = udf(udf_floor_total)
+                return float(s)
+        udf_transf = udf(udf_floor_total,FloatType())
 
         df = df.select(
             '*', udf_transf(df['floor_total']).alias('temp_name'))
@@ -65,10 +66,10 @@ class DataUniformity(object):
         def udf_is_broker(s):
             s = int(s)
             if s not in (0,1):
-                return is_broker_mode
+                return float(is_broker_mode)
             else:
-                return s
-        udf_transf = udf(udf_is_broker)
+                return float(s)
+        udf_transf = udf(udf_is_broker,FloatType())
 
         df = df.select(
             '*', udf_transf(df['is_broker']).alias('temp_name'))
@@ -82,7 +83,7 @@ class DataUniformity(object):
     @staticmethod
     def rentType(df):
 
-        udf_transf = udf(UDFMethods.udf_rentType)
+        udf_transf = udf(UDFMethods.udf_rentType,StringType())
 
         df = df.select(
             '*', udf_transf(df['rent_type']).alias('temp_name'))
@@ -96,7 +97,7 @@ class DataUniformity(object):
     # 目前ganji北京的这个特征全为Null
     @staticmethod
     def roomType(df):
-        udf_transf = udf(UDFMethods.udf_room_type)
+        udf_transf = udf(UDFMethods.udf_room_type,StringType())
 
         df = df.select(
             '*', udf_transf(df['room_type']).alias('temp_name'))
@@ -109,7 +110,7 @@ class DataUniformity(object):
 
     @staticmethod
     def payType(df):
-        udf_transf = udf(UDFMethods.udf_payType)
+        udf_transf = udf(UDFMethods.udf_payType,StringType())
 
         df = df.select(
             '*', udf_transf(df['pay_type']).alias('temp_name'))
@@ -123,7 +124,7 @@ class DataUniformity(object):
     @staticmethod
     def agencyName(df):
 
-        udf_transf = udf(UDFMethods.udf_agencyName)
+        udf_transf = udf(UDFMethods.udf_agencyName,StringType())
 
         df = df.select(
             '*', udf_transf(df['agency_name']).alias('temp_name'))
@@ -136,7 +137,7 @@ class DataUniformity(object):
     @staticmethod
     def zone(df):
 
-        udf_transf_zone = udf(UDFMethods.udf_zone)
+        udf_transf_zone = udf(UDFMethods.udf_zone,StringType())
 
         df = df.select(
             '*', udf_transf_zone(df['zone']).alias('temp_name'))

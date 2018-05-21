@@ -12,6 +12,8 @@ import pandas as pd
 import numpy as np
 from pyspark.sql.functions import udf,stddev,mean
 
+from pyspark.sql.types import StringType,FloatType
+
 
 # the method has been replaced in the XiGeMa of math.py
 def threeSTD(df,column):
@@ -32,11 +34,11 @@ def threeSTD(df,column):
         else:
             s = float(s)
             if (s >= down_limit) & (s <= up_limit):
-                return s
+                return float(s)
             else:
                 return None
 
-    udf_transf = udf(udf_XiGeMa)
+    udf_transf = udf(udf_XiGeMa,FloatType())
     df = df_non_nan.select(
         '*', udf_transf(df_non_nan[column]).alias('temp_name'))
     df = df.drop(column)
