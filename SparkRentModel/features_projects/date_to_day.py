@@ -71,7 +71,6 @@ if __name__ == '__main__':
 
     df = spark.read.csv('/root/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
 
-
     df = dateToDayTansform(df)
 
     df.show(truncate=False)

@@ -15,7 +15,7 @@ config = {
     # 'mongo_engine' : MongoClient('127.0.0.1', 27016)['huifenqi_mining']['comm_poi_clean'],
     'save_df_path': "./",
     'now_date': datetime.now(),
-    'null_no_processing': ['agency_name', 'direction','rent_type','room_type','district', 'pay_type','zone'], #'broker_id', 'agency_name',暂时不放入
+    'null_no_processing': ['agency_name', 'direction','rent_type','district', 'pay_type','zone'], #'broker_id', 'agency_name','room_type',暂时不放入
     'null_processing_delete': ['price','custom_id'],
     'null_processing_assignMean': ['score','house_count',],
     'null_processing_byAlgorithmRF': 'area',
