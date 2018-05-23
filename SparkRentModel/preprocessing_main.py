@@ -46,7 +46,7 @@ def processingMain(df):
     df = dataUniform(df)
     print('333333333333333333')
 
-    df = oneHotEncoding(df)
+    df = oneHotAll(df)
     print('444444444444444444444')
 
     df = outlierValue(df)
@@ -67,11 +67,11 @@ if __name__ == '__main__':
     from pyspark.sql import SparkSession
     import os
 
-    #os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
+    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
     sparkConf = SparkConf() \
         .setAppName('pyspark rentmodel') \
-        # .setMaster('local[*]')
+        .setMaster('local[*]')
     sc = SparkContext.getOrCreate(sparkConf)
 
     sc.setLogLevel('WARN')
@@ -82,15 +82,15 @@ if __name__ == '__main__':
     df = spark.read.csv('/user/limeng/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
     df = df.drop('bus')
     df = df.drop('_c0')
-    df = df.drop('id')
+    # df = df.drop('id')
     df = df.drop('crawl_time')
 
     df = processingMain(df)
 
-    # df.write.csv('/user/limeng/processed',header=True)
-    temp_df = df.select('price', 'area', 'room_num', 'hall_num', 'toilet_num', 'floor', 'floor_total')
+    # df.write.csv('/root/processed',header=True)
+    # temp_df = df.select('price', 'area', 'room_num', 'hall_num', 'toilet_num', 'floor', 'floor_total')
 
-    temp_df.show(truncate = False)
+    df.show()
 
     spark.stop()
     sc.stop()
