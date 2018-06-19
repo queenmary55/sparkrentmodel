@@ -6,7 +6,6 @@ import os
 
 # from pyspark.mllib.linalg import Vectors, VectorUDT
 
-from algorithms.importance import importance_features_map
 from pyspark.sql.functions import udf
 import pandas as pd
 import numpy as np
