@@ -113,7 +113,7 @@ print('=====================')
 df.show()
 
 (trainingData, testData) = df.randomSplit([0.7, 0.3])
-rf = RandomForestRegressor(numTrees=20,maxDepth=25,impurity="variance")
+rf = RandomForestRegressor(numTrees=20,maxDepth=15,impurity="variance")
 print('model_train_start======================')
 model = rf.fit(trainingData)
 model.save('/user/limeng/data/fangtianxia_daxing_RF_model')
@@ -146,7 +146,9 @@ cover_rate20 = round(num20/num,3)
 cover_rate10 = round(num10/num, 3)
 print('cover_rate20:',cover_rate20,'\n','cover_rate10:',cover_rate10)
 
-#importance_map_df = importance_features_map(columns_list, model)
+importance_map_df = importance_features_map(columns_list, model)
+importance_map_df = spark.createDataFrame(importance_map_df)
+importance_map_df.write.mode("overwrite").options(header="true").csv('/user/limeng/importance_map_df')
 #print('model.featureImportances===========',importance_map_df)
 
 
