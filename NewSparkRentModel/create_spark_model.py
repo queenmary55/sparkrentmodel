@@ -54,7 +54,7 @@ def read_parquet(parquet_path):
     columns.remove('price')
     from pyspark.ml.feature import OneHotEncoder, StringIndexer, StringIndexerModel
     from pyspark.ml.feature import CountVectorizer, CountVectorizerModel
-    model_path = "/user/limeng/save_models/"
+    model_path = "/user/limeng/ganji_daxing_save_models/"
     columns_list = []
     for i in columns:
         if i == 'facilities_vectors':
@@ -106,7 +106,7 @@ def importance_features_map(columns_list, regressor):
 
 
 start = time.time()
-parquet_path = '/user/limeng/data/fangtianxia_daxing.parquet'
+parquet_path = '/user/limeng/data/ganji_daxing.parquet'
 df, columns_list = read_parquet(parquet_path)
 
 print('=====================')
@@ -116,7 +116,7 @@ df.show()
 rf = RandomForestRegressor(numTrees=20,maxDepth=15,impurity="variance")
 print('model_train_start======================')
 model = rf.fit(trainingData)
-model.save('/user/limeng/data/fangtianxia_daxing_RF_model')
+model.save('/user/limeng/data/ganji_daxing_RF_model')
 
 #model = RandomForestRegressionModel.load('/user/limeng/data/fangtianxia_daxing_RF_model')
 predict_value = model.transform(testData)

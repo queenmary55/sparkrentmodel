@@ -75,7 +75,7 @@ if __name__ == '__main__':
     os.environ["PYSPARK_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
     os.environ["PYSPARK_DRIVER_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
 
-    conf=SparkConf().setAppName("pyspark rentmodel_new").setMaster("yarn-client").set("spark.driver.memory", "4g").set("spark.executor.instances", "6").set("spark.executor.memory", "4g").set("spark.executor.cores", '6')
+    conf=SparkConf().setAppName("pyspark rentmodel_new").setMaster("yarn-client").set("spark.driver.memory", "4g").set("spark.executor.instances", "6").set("spark.executor.memory", "3g").set("spark.executor.cores", '6')
    # sparkConf = SparkConf() \
     #    .setAppName('pyspark rentmodel') \
         # .setMaster('local[*]')
