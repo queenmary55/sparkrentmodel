@@ -99,9 +99,9 @@ def deriveNewMethod(df):
     df = df.filter(df['price'].isNotNull())
     df = df.filter(df['room_num'].isNotNull())
 
-    df = df.filter(df['area'] !='NULL')
-    df = df.filter(df['price'] !='NULL')
-    df = df.filter(df['room_num'] !='NULL')
+    #df = df.filter(df['area'] !='NULL')
+    #df = df.filter(df['price'] !='NULL')
+    #df = df.filter(df['room_num'] !='NULL')
 
     # 去除点值为0的行
     df = df.filter(df['area'] != 0)
