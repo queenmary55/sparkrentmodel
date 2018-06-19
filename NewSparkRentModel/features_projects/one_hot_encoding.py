@@ -23,7 +23,7 @@ def oneHot(df, base_col_name, col_name):
     import os
     import time
 
-    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
+    #os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
     sparkConf = SparkConf() \
         .setAppName('pyspark rentmodel') \
@@ -41,7 +41,7 @@ def oneHot(df, base_col_name, col_name):
     df = df.na.fill(null_col_name, col_name)
     df_NULL = df.filter(df[col_name] == 'NULL')
 
-    temp_path = '/root/oneHotModels_61/'
+    temp_path = '/user/limeng/save_models/'
 
     if df_NULL.count() > 0:
 

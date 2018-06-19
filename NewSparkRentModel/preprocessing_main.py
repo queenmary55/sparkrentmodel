@@ -30,40 +30,36 @@ from data_preprocessing.outlier import outlierValue
 
 
 def processingMain(df):
-    import sys
-    print('=======',sys.path)
-    print('------------before:',df.count(),df.columns)
+    print('第1个流程：检查空值率，并将空置率大于70%的列去掉------before:',df.count(),df.columns)
     df = checkNullRate(df)
-    print('------------after:', df.count(), df.columns)
+    print('第1个流程：检查空值率，并将空置率大于70%的列去掉------after:', df.count(), df.columns)
 
     nad = NullAndDuplications()
     df = nad.finalFillNull(df)
-    print('11111111111111111')
-    print('df.dtypes11===',df.dtypes)
+    print('第2个流程：完成空值填充========================')
 
     df = tranFacilitiesFieldNewMethod(df)
-    print('2222222222222222222')
-    print('df.dtypes22===', df.dtypes)
+    print('第3个流程：完成facilities字段编码====================')
 
     df = dataUniform(df)
-
-    print('333333333333333333')
+    print('第4个流程：完成数据一致性处理================')
 
     df = oneHotAll(df)
-    print('444444444444444444444')
+    print('第5个流程：完成one-hot编码====================')
 
     df = outlierValue(df)
-    print('666666666666666666666')
+    print('第6个流程：完成异常值处理=======================')
 
     df = derive(df)
-    print('777777777777777777777777')
-    print(df.dtypes)
+    print('第7个流程：完成派生变量的生成及其异常值的处理==================')
 
     return df
 
 
+
 if __name__ == '__main__':
 
+   
     import time
     from pyspark.sql import SparkSession
     from pyspark import SparkContext, SparkConf
@@ -75,80 +71,51 @@ if __name__ == '__main__':
     from pyspark.ml.linalg import Vectors
     from pyspark.ml.regression import RandomForestRegressor, RandomForestRegressionModel
 
-    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
-    sparkConf = SparkConf() \
-        .setAppName('pyspark rentmodel') \
-        .setMaster('local[*]')
-    sc = SparkContext.getOrCreate(sparkConf)
+    os.environ["PYSPARK_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
+    os.environ["PYSPARK_DRIVER_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
 
-    sc.setLogLevel('WARN')
-    spark = SparkSession(sparkContext=sc)
+    conf=SparkConf().setAppName("pyspark rentmodel_new").setMaster("yarn-client").set("spark.driver.memory", "4g").set("spark.executor.instances", "6").set("spark.executor.memory", "4g").set("spark.executor.cores", '6')
+   # sparkConf = SparkConf() \
+    #    .setAppName('pyspark rentmodel') \
+        # .setMaster('local[*]')
+    sc = SparkContext(conf=conf)
 
+    sc.setLogLevel('ERROR')
+#    spark = SparkSession(sparkContext=sc)
+    spark = SparkSession.builder.enableHiveSupport().getOrCreate()
     start = time.time()
 
-    df = spark.read.csv('/root/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
+#    df = spark.read.csv('/user/limeng/ganji_beijing_pyspark.csv', header=True, encoding='utf-8')
+#    df = spark.sql("select * from olap.new_ganji_beijing")
+#    df = spark.read.table('olap.ganji_beijing_table')
+    #df = spark.sql("select * from olap.new_ganji_beijing where district='大兴'")
+
+    df = spark.sql("select * from dm.fangtianxia_beijing where district='大兴'")
     df = df.drop('bus')
-    df = df.drop('_c0')
-    # df = df.drop('id')
+    print('df.dtypes==========',df.dtypes) 
+    print('========',df.count())
     df = df.drop('crawl_time')
 
+    cols = df.columns
+    for i in cols:
+        if df.filter(df[i] == 'NULL').count() > 0:
+            print('NULL_column====',df.filter(df[i] == 'NULL').count())
+
     df = processingMain(df)
-    df.show(400,truncate=False)
-
-    df = df.drop('id')
-    print('type(df)',type(df))
-
-    df.write.mode('overwrite').parquet('/root/data/test2.parquet')
-    print('successed!!!!!!!!!!!!!!')
-
-
-
-    # for i in df.columns:
-    #     if 'Vec'not in i:
-    #         df = df.select('*',df[i].cast('float').alias('tmp_name')).drop(i)
-    #         df = df.withColumnRenamed('tmp_name',i)
-    #
-    # columns = df.columns
-    # columns.remove('price')
-    #
-    # vecAssembler = VectorAssembler(inputCols=columns, outputCol="features")
-    #
-    # df = vecAssembler.transform(df)
-    # df = df.withColumnRenamed('price', 'label')
-    # print('============************--------------=======================')
-    # # df.show(truncate=False)
-    #
-    # sdf = df.select("features", "label")
-    #
-    # rf = RandomForestRegressor()
-    #
-    # model = rf.fit(sdf)
-    #
-    # print('model.featureImportances===========',model.featureImportances)
-
-    # importance_map_df = rfRegressor(df)
-    # print('importance_map_df===', importance_map_df)
-
-
-    #
-
-    # df.write.mode("overwrite").options(header="true").csv('/root/data/procesded_data/test.csv')
-    # # temp_df = df.select('price', 'area', 'room_num', 'hall_num', 'toilet_num', 'floor', 'floor_total')
-    #
-    # sc.wholeTextFiles
-
-    # df.show()
-    print(df.dtypes)
-
-    # df.write.csv('/root/processed_data_sparse', header=True)
-
+	print('第8个流程：数据处理完毕并示数据====================')
+    df.show()
+	
+    df.write.mode('overwrite').parquet('/user/limeng/data/fangtianxia_daxing.parquet')
+	print('第9个流程：处理后数据存储（写入）完毕====================')
+    #df.write.mode("overwrite").options(header="true").csv('/user/limeng/data/procesded_data/newallganji28')
+	
     spark.stop()
     sc.stop()
 
     end = time.time()
 
-    print('程序运行时间（秒）：', round(end - start, 2))
-
-
-from pyspark.sql import DataFrameWriter
+    print('程序运行时间（分钟）：', round((end - start)/60, 2))
+	
+	
+	
