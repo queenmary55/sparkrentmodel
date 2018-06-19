@@ -30,34 +30,28 @@ from data_preprocessing.outlier import outlierValue
 
 
 def processingMain(df):
-    import sys
-    print('=======',sys.path)
-    print('------------before:',df.count(),df.columns)
+    print('第1个流程：检查空值率，并将空置率大于70%的列去掉------before:',df.count(),df.columns)
     df = checkNullRate(df)
-    print('------------after:', df.count(), df.columns)
+    print('第1个流程：检查空值率，并将空置率大于70%的列去掉------after:', df.count(), df.columns)
 
     nad = NullAndDuplications()
     df = nad.finalFillNull(df)
-    print('11111111111111111')
-    print('df.dtypes11===',df.dtypes)
+    print('第2个流程：完成空值填充========================')
 
     df = tranFacilitiesFieldNewMethod(df)
-    print('2222222222222222222')
-    print('df.dtypes22===', df.dtypes)
+    print('第3个流程：完成facilities字段编码====================')
 
     df = dataUniform(df)
-
-    print('333333333333333333')
+    print('第4个流程：完成数据一致性处理================')
 
     df = oneHotAll(df)
-    print('444444444444444444444')
+    print('第5个流程：完成one-hot编码====================')
 
     df = outlierValue(df)
-    print('666666666666666666666')
+    print('第6个流程：完成异常值处理=======================')
 
     df = derive(df)
-    print('777777777777777777777777')
-    print(df.dtypes)
+    print('第7个流程：完成派生变量的生成及其异常值的处理==================')
 
     return df
 
@@ -107,8 +101,11 @@ if __name__ == '__main__':
             print('NULL_column====',df.filter(df[i] == 'NULL').count())
 
     df = processingMain(df)
+	print('第7个流程：数据处理完毕并示数据====================')
     df.show()
+	
     df.write.mode('overwrite').parquet('/user/limeng/data/fangtianxia_daxing.parquet')
+	print('第8个流程：处理后数据存储（写入）完毕====================')
     #df.write.mode("overwrite").options(header="true").csv('/user/limeng/data/procesded_data/newallganji28')
 	
     spark.stop()
