@@ -75,80 +75,48 @@ if __name__ == '__main__':
     from pyspark.ml.linalg import Vectors
     from pyspark.ml.regression import RandomForestRegressor, RandomForestRegressionModel
 
-    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
-    sparkConf = SparkConf() \
-        .setAppName('pyspark rentmodel') \
-        .setMaster('local[*]')
-    sc = SparkContext.getOrCreate(sparkConf)
+    os.environ["PYSPARK_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
+    os.environ["PYSPARK_DRIVER_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
 
-    sc.setLogLevel('WARN')
-    spark = SparkSession(sparkContext=sc)
+    conf=SparkConf().setAppName("pyspark rentmodel_new").setMaster("yarn-client").set("spark.driver.memory", "4g").set("spark.executor.instances", "6").set("spark.executor.memory", "4g").set("spark.executor.cores", '6')
+   # sparkConf = SparkConf() \
+    #    .setAppName('pyspark rentmodel') \
+        # .setMaster('local[*]')
+    sc = SparkContext(conf=conf)
 
+    sc.setLogLevel('ERROR')
+#    spark = SparkSession(sparkContext=sc)
+    spark = SparkSession.builder.enableHiveSupport().getOrCreate()
     start = time.time()
 
-    df = spark.read.csv('/root/ganji_beijing_pyspark.csv', header=True, encoding='gbk')
+#    df = spark.read.csv('/user/limeng/ganji_beijing_pyspark.csv', header=True, encoding='utf-8')
+#    df = spark.sql("select * from olap.new_ganji_beijing")
+#    df = spark.read.table('olap.ganji_beijing_table')
+    #df = spark.sql("select * from olap.new_ganji_beijing where district='大兴'")
+
+    df = spark.sql("select * from dm.fangtianxia_beijing where district='大兴'")
     df = df.drop('bus')
-    df = df.drop('_c0')
-    # df = df.drop('id')
+    print('df.dtypes==========',df.dtypes) 
+    print('========',df.count())
     df = df.drop('crawl_time')
 
+    cols = df.columns
+    for i in cols:
+        if df.filter(df[i] == 'NULL').count() > 0:
+            print('NULL_column====',df.filter(df[i] == 'NULL').count())
+
     df = processingMain(df)
-    df.show(400,truncate=False)
-
-    df = df.drop('id')
-    print('type(df)',type(df))
-
-    df.write.mode('overwrite').parquet('/root/data/test2.parquet')
-    print('successed!!!!!!!!!!!!!!')
-
-
-
-    # for i in df.columns:
-    #     if 'Vec'not in i:
-    #         df = df.select('*',df[i].cast('float').alias('tmp_name')).drop(i)
-    #         df = df.withColumnRenamed('tmp_name',i)
-    #
-    # columns = df.columns
-    # columns.remove('price')
-    #
-    # vecAssembler = VectorAssembler(inputCols=columns, outputCol="features")
-    #
-    # df = vecAssembler.transform(df)
-    # df = df.withColumnRenamed('price', 'label')
-    # print('============************--------------=======================')
-    # # df.show(truncate=False)
-    #
-    # sdf = df.select("features", "label")
-    #
-    # rf = RandomForestRegressor()
-    #
-    # model = rf.fit(sdf)
-    #
-    # print('model.featureImportances===========',model.featureImportances)
-
-    # importance_map_df = rfRegressor(df)
-    # print('importance_map_df===', importance_map_df)
-
-
-    #
-
-    # df.write.mode("overwrite").options(header="true").csv('/root/data/procesded_data/test.csv')
-    # # temp_df = df.select('price', 'area', 'room_num', 'hall_num', 'toilet_num', 'floor', 'floor_total')
-    #
-    # sc.wholeTextFiles
-
-    # df.show()
-    print(df.dtypes)
-
-    # df.write.csv('/root/processed_data_sparse', header=True)
-
+    df.show()
+    df.write.mode('overwrite').parquet('/user/limeng/data/fangtianxia_daxing.parquet')
+    #df.write.mode("overwrite").options(header="true").csv('/user/limeng/data/procesded_data/newallganji28')
+	
     spark.stop()
     sc.stop()
 
     end = time.time()
 
-    print('程序运行时间（秒）：', round(end - start, 2))
+    print('程序运行时间（分钟）：', round((end - start)/60, 2))
 
 
 from pyspark.sql import DataFrameWriter
