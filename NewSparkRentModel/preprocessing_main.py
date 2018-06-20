@@ -103,11 +103,11 @@ if __name__ == '__main__':
             print('NULL_column====',df.filter(df[i] == 'NULL').count())
 
     df = processingMain(df)
-	print('第8个流程：数据处理完毕并示数据====================')
+    print('第8个流程：数据处理完毕并示数据====================')
     df.show()
 	
     df.write.mode('overwrite').parquet('/user/limeng/data/fangtianxia_daxing.parquet')
-	print('第9个流程：处理后数据存储（写入）完毕====================')
+    print('第9个流程：处理后数据存储（写入）完毕====================')
     #df.write.mode("overwrite").options(header="true").csv('/user/limeng/data/procesded_data/newallganji28')
 	
     spark.stop()
