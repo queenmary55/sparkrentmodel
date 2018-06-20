@@ -42,6 +42,7 @@ def oneHot(df, base_col_name, col_name):
     df_NULL = df.filter(df[col_name] == 'NULL')
     
     df = df.filter(df[col_name].isNotNull())
+    df = df.filter(df[col_name] != '')
     print('one-hot=======',col_name,df.count())
 
     temp_path = '/user/limeng/save_models/'
