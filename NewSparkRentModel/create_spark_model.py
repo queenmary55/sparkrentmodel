@@ -104,7 +104,7 @@ def importance_features_map(columns_list, regressor):
 
     arr = np.array([columns_list, importances_values])
     importance_map_df = pd.DataFrame(arr.T, columns=['X_columns', 'importances_values'])
-    importance_map_df.apply(importance_map_df.to_numeric, errors='ignore')
+    importance_map_df.apply(pd.to_numeric, errors='ignore')
     importance_map_df = importance_map_df.sort_values(by='importances_values', ascending=False)
 
     return importance_map_df
