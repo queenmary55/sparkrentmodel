@@ -140,9 +140,9 @@ def tranFacilitiesFieldNewMethod(df):
     model = cv.fit(df)
     df = model.transform(df)
 
-    all_models_path = '/user/limeng/save_models/'
-    countVectorizer_Path = all_models_path + "/count-vectorizer"
-    countVectorizer_model_Path = all_models_path + "/count-vectorizer-model"
+    all_models_path = '/data/20180621/ALL_58_beijing_save_models/'
+    countVectorizer_Path = all_models_path + "count-vectorizer"
+    countVectorizer_model_Path = all_models_path + "count-vectorizer-model"
     cv.save(countVectorizer_Path)
     model.save(countVectorizer_model_Path)
 
