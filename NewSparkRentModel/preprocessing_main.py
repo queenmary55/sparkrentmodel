@@ -91,11 +91,14 @@ if __name__ == '__main__':
 #    df = spark.read.table('olap.ganji_beijing_table')
     #df = spark.sql("select * from olap.new_ganji_beijing where district='大兴'")
 
-    df = spark.sql("select * from dm.fangtianxia_beijing where district='大兴'")
+    df = spark.sql("select * from dm.58_beijing)
     df = df.drop('bus')
+    df = df.drop('subway')
+    df = df.drop('agency_name')
+    df = df.drop('crawl_time')
     print('df.dtypes==========',df.dtypes) 
     print('========',df.count())
-    df = df.drop('crawl_time')
+    
 
     cols = df.columns
     for i in cols:
