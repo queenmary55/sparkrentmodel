@@ -45,7 +45,7 @@ def oneHot(df, base_col_name, col_name):
     df = df.filter(df[col_name] != '')
     print('one-hot=======',col_name,df.count())
 
-    temp_path = '/user/limeng/save_models/'
+    temp_path = '/data/20180621/ALL_58_beijing_save_models/'
 
     if df_NULL.count() > 0:
 
