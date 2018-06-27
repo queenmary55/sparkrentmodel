@@ -109,7 +109,7 @@ if __name__ == '__main__':
     print('第8个流程：数据处理完毕并示数据====================')
     df.show()
 	
-    df.write.mode('overwrite').parquet('/user/limeng/data/fangtianxia_daxing.parquet')
+    df.write.mode('overwrite').parquet('/data/20180621/limeng/data/58_beijing.parquet')
     print('第9个流程：处理后数据存储（写入）完毕====================')
     #df.write.mode("overwrite").options(header="true").csv('/user/limeng/data/procesded_data/newallganji28')
 	
