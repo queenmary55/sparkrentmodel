@@ -22,18 +22,23 @@ def checkNullRate(df):
 
     if df_rows > 0:
         for i in colums:
-            # 注意：1、在excel中值显示为NULL的pyspark读进来是字符串的'NULL'这个，因此isNull函数无法识别,之所以这样是因为这一列
-            # 的数值类型是string,所以null也变成了字符串的NULL了,如果此列是int则，此列在excel即使显示是NULL也会被isnull识别。
-            # 2、在excel中值显示为空白的，isNull函数能识别
+            if df.select(i).count() > 0:
+                # 注意：1、在excel中值显示为NULL的pyspark读进来是字符串的'NULL'这个，因此isNull函数无法识别,之所以这样是因为这一列
+                # 的数值类型是string,所以null也变成了字符串的NULL了,如果此列是int则，此列在excel即使显示是NULL也会被isnull识别。
+                # 2、在excel中值显示为空白的，isNull函数能识别
 
-            df_NULL = df.filter(df[i]=='NULL')
-            df_nan = df.filter(df[i].isNull())
+                df_NULL = df.filter(df[i]=='NULL')
+                df_nan = df.filter(df[i].isNull())
 
-            rate = (df_nan.count() + df_NULL.count())/df_rows
-            if rate > 0.7:
+                rate = (df_nan.count() + df_NULL.count())/df_rows
+                if rate > 0.7:
+                    df = df.drop(i)
+                else:
+                    pass
+            elif df.select(i).count() <= 0:
                 df = df.drop(i)
             else:
-                pass
+                pass               
     else:
         print('the dataframe is null---------------------')
 
