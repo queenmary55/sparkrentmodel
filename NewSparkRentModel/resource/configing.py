@@ -31,8 +31,8 @@ config = {
     # 'fill_replace_value' : 0,
     'fill_fillna_value': 0,
     'train_size_rate': 0.9,
-    'uniformity_direction': ['东','南','西','北','东西','西东','南北','北南',
-                              '东南','南东','东北','北东','西北','北西'],
+#     'uniformity_direction': ['东','南','西','北','东西','西东','南北','北南',
+#                               '东南','南东','东北','北东','西北','北西'],
     # 'non_uniformity_price' : ['面议','区间的情况、、、'], # 暂时不考虑做
     'uniformity_floor_total_max': 100,
     'uniformity_room_type': ['主','隔断','单租','次'],# 1、目前考虑使用one-hot,可以考虑制定数字变为有序值。2、问问爬虫时做过这个处理没有：把“次卧”转换“次”，“主卧”转换成“主”。如果没有，需要做这一步操作
