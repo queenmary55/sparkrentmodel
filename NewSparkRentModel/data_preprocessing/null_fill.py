@@ -37,7 +37,7 @@ class NullAndDuplications(object):
         return df
 
     def howFill(self, df, colums):
-        print('df.filter(df[colums].isNull()).count()=======fill_before',colums,df.filter(df[colums].isNull()).count())
+        
         if colums in cf.get('null_processing_delete'):
             df = FillMethods.delete(df, colums)
         elif colums in cf.get('null_processing_assignMean'):
@@ -60,7 +60,7 @@ class NullAndDuplications(object):
 
         else:
             pass
-        print('df.filter(df[colums].isNull()).count()=======fill_after', colums,df.filter(df[colums].isNull()).count())
+        
         return df
 
     def fillNull(self,df):
