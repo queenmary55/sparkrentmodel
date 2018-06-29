@@ -138,7 +138,7 @@ def tranFacilitiesFieldNewMethod(df):
 
     cv = CountVectorizer(inputCol='facilities', outputCol='facilities_vectors')
     model = cv.fit(df)
-    df = model.transform(df)
+    df = model.transform(df).drop('facilities')
 
     all_models_path = '/data/20180621/ALL_58_beijing_save_models/'
     countVectorizer_Path = all_models_path + "count-vectorizer"
