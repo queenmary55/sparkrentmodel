@@ -168,16 +168,25 @@ def fieldsProcess(input_dict_data,path):
     # 9.the data transform
     one_hot_cols1 = ['direction', 'rent_type', 'district', 'pay_type', 'zone']
     one_hot_cols2 = ['agency_name', 'direction', 'rent_type', 'district', 'pay_type', 'zone']
+    model_path1 = '/user/limeng/20180703/save_models_ALL_58_beijingbaifenzhi20/'
+    model_path2 = '/user/limeng/20180703/save_models_three_beijingbaifenzhi15/'
+    model_path3 = '/user/limeng/20180703/save_models_ALL_fangtianxia_beijing/'
+    model_path4 = '/user/limeng/20180703/save_models_ALL_ganji_beijing/'
     for i in exist_fields:
         if i in oneHot_fields_list:
             print('path---------------',i,path)
             if ('baifenzhi' in path) & (i in one_hot_cols1):
                 print('baifenzhi----------------')
+                if 'baifenzhi20' in path:
+                    df = newDataOneHot(df, model_path1,i)
+                if 'baifenzhi15' in path:
+                    df = newDataOneHot(df, model_path2,i)
 
-                df = newDataOneHot(df, i)
-
-            elif ('baifenzhi' not in path) & (i in one_hot_cols2):
-                df = newDataOneHot(df,i)
+            elif (('fangtianxia' in path) | ('ganji' in path)) & (i in one_hot_cols2):
+                if 'fangtianxia' in path:
+                    df = newDataOneHot(df, model_path3,i)
+                if 'ganji' in path:
+                    df = newDataOneHot(df, model_path4,i)
             else:
                 pass
 
@@ -186,7 +195,14 @@ def fieldsProcess(input_dict_data,path):
         elif i in assign_num_fields_list:
             df = assingNumber(df)
         elif i == facilities_field:
-            df = newDataFacilities(df)
+            if 'baifenzhi20' in path:
+                df = newDataFacilities(df, model_path1)
+            if 'baifenzhi15' in path:
+                df = newDataFacilities(df, model_path2)
+            if 'fangtianxia' in path:
+                df = newDataFacilities(df, model_path3)
+            if 'ganji' in path:
+                df = newDataFacilities(df, model_path4)
         else:
             pass
 
@@ -199,7 +215,12 @@ def fieldsProcess(input_dict_data,path):
             pass
 
     # let the order is the same to the data of training model
-    df = df.select(['hall_num', 'toilet_num', 'floor', 'decoration', 'facilities_vectors', 'floor_total',
+    if 'baifenzhi' in path:
+        df = df.select(['hall_num', 'toilet_num', 'floor', 'decoration', 'facilities_vectors', 'floor_total',
+                    'is_broker', 'directionVec', 'zoneVec', 'rent_typeVec', 'districtVec',
+                    'pay_typeVec', 'area', 'price', 'room_num', 'one_room_area'])
+    if ('fangtianxia' in path) | ('ganji' in path):
+        df = df.select(['hall_num', 'toilet_num', 'floor', 'decoration', 'facilities_vectors', 'floor_total',
                     'is_broker', 'directionVec', 'zoneVec', 'rent_typeVec', 'agency_nameVec', 'districtVec',
                     'pay_typeVec', 'area', 'price', 'room_num', 'one_room_area'])
     return  df
