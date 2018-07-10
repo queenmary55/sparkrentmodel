@@ -5,12 +5,11 @@
 from pyspark.ml.feature import OneHotEncoder, StringIndexer,StringIndexerModel
 from pyspark.sql.functions import udf
 
-def newDataOneHot(df,col):
-    temp_path = '/root/save_data_processed_models/'
+def newDataOneHot(df,onehot_model_path,col):
 
     from random import choice
 
-    loadStringIndexerModel = StringIndexerModel.load(temp_path + 'stringIndexer_model' + col)
+    loadStringIndexerModel = StringIndexerModel.load(onehot_model_path + 'stringIndexer_model' + col)
     labels = loadStringIndexerModel.labels
     print('labels=========',col, labels)
     columns = df.columns
@@ -35,10 +34,9 @@ def newDataOneHot(df,col):
     df = df.select(columns)
 
     indexed = loadStringIndexerModel.transform(df)
-    print('----------------=======================-----------',temp_path + 'onehot_encoder' + col)
+    print('----------------=======================-----------',onehot_model_path + col + '_new')
     indexed.show()
-    loadOneHotEncoderModel = OneHotEncoder.load(temp_path + 'onehot_encoder' + col)
-    print('loadOneHotEncoderModel.getInputCol()()----------',loadOneHotEncoderModel.getParam('inputCol'))
+    loadOneHotEncoderModel = OneHotEncoder.load(onehot_model_path + col + '_new')
     df = loadOneHotEncoderModel.transform(indexed)
 
     index_name = col + 'Index'
