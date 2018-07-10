@@ -10,8 +10,8 @@ from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
 import os
 import json
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
+#from django.http import JsonResponse
+#from django.views.decorators.http import require_POST
 
 """
     1.获取前端传来的数据并处理
@@ -168,6 +168,7 @@ def fieldsProcess(input_dict_data,path):
     # 9.the data transform
     one_hot_cols1 = ['direction', 'rent_type', 'district', 'pay_type', 'zone']
     one_hot_cols2 = ['agency_name', 'direction', 'rent_type', 'district', 'pay_type', 'zone']
+
     model_path1 = '/user/limeng/20180703/save_models_ALL_58_beijingbaifenzhi20/'
     model_path2 = '/user/limeng/20180703/save_models_three_beijingbaifenzhi15/'
     model_path3 = '/user/limeng/20180703/save_models_ALL_fangtianxia_beijing/'
@@ -215,6 +216,8 @@ def fieldsProcess(input_dict_data,path):
             pass
 
     # let the order is the same to the data of training model
+    print('sucess==============================')
+    df.show(truncate=False)
     if 'baifenzhi' in path:
         df = df.select(['hall_num', 'toilet_num', 'floor', 'decoration', 'facilities_vectors', 'floor_total',
                     'is_broker', 'directionVec', 'zoneVec', 'rent_typeVec', 'districtVec',
@@ -264,18 +267,27 @@ def rentPricePredict(input_dict_data):
     mean_result = round(sum(result)/4, 2)
     resp = {'predict_price': mean_result}
 
-    response = JsonResponse(resp)
-    return response
+#    response = JsonResponse(resp)
+#    return response
 
 
 
 if __name__ == '__main__':
-    os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
+   # os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
-    sparkConf = SparkConf() \
-        .setAppName('pyspark rentmodel') \
-        .setMaster('local[*]')
-    sc = SparkContext.getOrCreate(sparkConf)
+   # sparkConf = SparkConf() \
+    #    .setAppName('pyspark rentmodel') \
+     #   .setMaster('local[*]')
+
+
+    import os
+    os.environ["PYSPARK_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
+    os.environ["PYSPARK_DRIVER_PYTHON"]="/home/hadoop/.pyenv/versions/anaconda3-4.2.0/bin/python"
+
+    conf=SparkConf().setAppName("pyspark rentmodel_interface").setMaster("yarn-client").set("spark.driver.memory", "3g")\
+        .set('spark.yarn.am.memory','3g').set("spark.executor.instances", "6").set("spark.executor.memory", "3g")\
+        .set("spark.executor.cores", '4')#.set("spark.yarn.queue", "batch")#.set('yarn.scheduler.maximum-allocation-mb','5g')
+    sc = SparkContext.getOrCreate(conf = conf)
 
     sc.setLogLevel('ERROR')
     spark = SparkSession(sparkContext=sc)
@@ -295,36 +307,3 @@ if __name__ == '__main__':
 
     sc.stop()
     spark.stop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
