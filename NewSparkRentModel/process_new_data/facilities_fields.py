@@ -4,11 +4,11 @@
 
 from pyspark.sql.functions import udf
 
-def newDataFacilities(df):
+def newDataFacilities(df,model_path):
     from pyspark.ml.feature import CountVectorizerModel
     from random import choice
 
-    loaded_count_vectorizer_model = CountVectorizerModel.load('/root/save_data_processed_models/count-vectorizer-model')
+    loaded_count_vectorizer_model = CountVectorizerModel.load(model_path + 'count-vectorizer-model')
 
     vocabularies = loaded_count_vectorizer_model.vocabulary
 
