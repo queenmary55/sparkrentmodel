@@ -22,7 +22,7 @@ class UDFMethods(object):
         # s = s.strip().strip('\n').strip('\t')
        try:
            if s == 0.0:
-               pass
+               return s
            elif s == '低':
                return float(1)
            elif s == '中':
@@ -39,7 +39,7 @@ class UDFMethods(object):
         # s = s.strip().strip('\n').strip('\t')
         try:
             if s == 0.0:
-                pass
+                return s
             elif s == '毛坯':
                 return float(0)
             elif s == '简':
