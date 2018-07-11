@@ -90,7 +90,7 @@ def fieldsProcess(input_dict_data,path):
                     print('the value is illegal')
                     break
 
-                if (k == 'is_broker') & ((value not in [0,1]) | value not in [0.0,1.0]):
+                if ((k == 'is_broker') & (value not in [0,1])) | ((k == 'is_broker') & (value not in [0.0,1.0])):
                     print("is_broker's value must be 0(or 0.0) or 1(or 1.0)")
                     break
 
