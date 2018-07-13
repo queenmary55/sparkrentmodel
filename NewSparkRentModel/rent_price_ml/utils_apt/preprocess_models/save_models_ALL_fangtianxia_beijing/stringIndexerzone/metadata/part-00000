@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexer","timestamp":1529478571436,"sparkVersion":"2.1.1","uid":"StringIndexer_44c69565225ee8e65ae2","paramMap":{"handleInvalid":"error","outputCol":"zoneIndex","inputCol":"zone"}}

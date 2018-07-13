@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexer","timestamp":1530527097623,"sparkVersion":"2.1.1","uid":"StringIndexer_4fc2a6cd5449d05909c8","paramMap":{"inputCol":"rent_type","handleInvalid":"error","outputCol":"rent_typeIndex"}}

@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.OneHotEncoder","timestamp":1530527183971,"sparkVersion":"2.1.1","uid":"OneHotEncoder_41cfa1ce6a2745f54690","paramMap":{"outputCol":"pay_typeVec","inputCol":"pay_typeIndex","dropLast":false}}

@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.StringIndexer","timestamp":1529478694322,"sparkVersion":"2.1.1","uid":"StringIndexer_4814b70572aaa440934c","paramMap":{"handleInvalid":"error","outputCol":"districtIndex","inputCol":"district"}}
