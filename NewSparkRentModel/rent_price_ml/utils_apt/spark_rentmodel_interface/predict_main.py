@@ -114,7 +114,7 @@ def fieldsProcess(tmp_input_dict_data,path):
         tmp_input_dict_data['one_room_area'] = round(tmp_input_dict_data['area']/tmp_input_dict_data['room_num'],2)
     if tmp_input_dict_data['rent_type'] == '合租':
         tmp_input_dict_data['one_room_area'] = tmp_input_dict_data['area']
-    if tmp_input_dict_data['rent_type'] == '其他':
+    if tmp_input_dict_data['rent_type'] not in ['整租','合租']:
         tmp_input_dict_data['one_room_area'] = round(tmp_input_dict_data['area'] / tmp_input_dict_data['room_num'], 2)
         if tmp_input_dict_data['one_room_area'] < 30:
             tmp_input_dict_data['one_room_area'] = tmp_input_dict_data['area']
