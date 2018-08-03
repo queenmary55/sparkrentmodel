@@ -65,7 +65,6 @@ facilities_vocab_ganji = ['床', '空调', '热水器', '洗衣机', '冰箱', '
 
 
 def fieldsProcess(tmp_input_dict_data):
-
     keys_list = list(tmp_input_dict_data.keys())
 
     # 2.to check the existance fields in all_fields_list from input dataframe
@@ -431,7 +430,7 @@ def loadModel(input_dict_data,path):
     os.environ['SPARK_HOME'] = '/root/spark-2.1.1-bin'
 
     sparkConf = SparkConf() \
-        .setAppName('pyspark rentmodel') \
+        .setAppName('load rentmodel') \
         .setMaster('local[*]')
 
     sc = SparkContext.getOrCreate(conf=sparkConf)
@@ -453,10 +452,10 @@ def loadModel(input_dict_data,path):
     # end22 = time.time()
     # print('spark.createDataFrame(new_data_fangtianxia):', end22 - start22)
 
-    #start33 = time.time()
+    start33 = time.time()
     new_data_ganji_df = spark.createDataFrame(new_data_ganji)
-    #end33=time.time()
-    #print('spark.createDataFrame(new_data_ganji):',end33 - start33)
+    end33=time.time()
+    print('spark.createDataFrame(new_data_ganji):',end33 - start33)
 
     # start44 = time.time()
     # vecAssembler_58 = VectorAssembler(inputCols=new_data_58_df.columns, outputCol="features")
@@ -470,23 +469,24 @@ def loadModel(input_dict_data,path):
     # end55 = time.time()
     # print('vecAssembler_fangtianxia:', end55 - start55)
 
-    #start66 = time.time()
+    start66 = time.time()
     vecAssembler_ganji = VectorAssembler(inputCols=new_data_ganji_df.columns, outputCol="features")
     new_data_ganji_df = vecAssembler_ganji.transform(new_data_ganji_df)
-    #end66 = time.time()
-    #print('vecAssembler_ganji:',end66 - start66)
+    end66 = time.time()
+    print('vecAssembler_ganji:',end66 - start66)
 
-    #start77 = time.time()
+    start77 = time.time()
+
     loadmodel_ganji = GBTRegressionModel.load(path[0])
     # loadmodel_fangtianxia = GBTRegressionModel.load(path[1])
     # loadmodel_58 = RandomForestRegressionModel.load(path[2])
-    #end77 = time.time()
-    #print('load models:', end77 - start77)
+    end77 = time.time()
+    print('load models:', end77 - start77)
 
-    #start88 = time.time()
+    start88 = time.time()
     predict_result_ganji = loadmodel_ganji.transform(new_data_ganji_df)
-    #end88 = time.time()
-    #print('predict_result_ganji:', end88 - start88)
+    end88 = time.time()
+    print('predict_result_ganji:', end88 - start88)
 
     # start10 = time.time()
     # predict_result_fangtianxia = loadmodel_fangtianxia.transform(new_data_fangtianxia_df)
@@ -501,26 +501,23 @@ def loadModel(input_dict_data,path):
     # return predict_result_ganji, predict_result_fangtianxia, predict_result_58
     return predict_result_ganji
 
-    sc.stop()
-    spark.stop()
+    # sc.stop()
+    # spark.stop()
 
 
 def rentPricePredict(input_dict_data):
-	start11 = time.time()
 
     # model_path = ['../preprocess_models/model_ALL_ganji_beijing_gbdt20',
     #               '../preprocess_models/model_ALL_fangtianxia_beijing_gbdt20',
     #               '../preprocess_models/model_ALL_58_beijing_baifenzhi20_rf19']
 
-    # model_path = ['/root/my_django_api/my_django_api/utils_apt/preprocess_models/model_ALL_ganji_beijing_gbdt20',
-    #              '/root/my_django_api/my_django_api/utils_apt/preprocess_models/model_ALL_fangtianxia_beijing_gbdt20',
-    #              '/root/my_django_api/my_django_api/utils_apt/preprocess_models/model_ALL_58_beijing_baifenzhi20_rf19']
-	
-	model_path = ['/root/my_django_api/my_django_api/utils_apt/preprocess_models/model_ALL_ganji_beijing_gbdt20']
+    from my_django_api.__init__ import MODEL_PATH
+    model_path = MODEL_PATH
 
     # predict_result_ganji, predict_result_fangtianxia, predict_result_58 = loadModel(input_dict_data,model_path)
     predict_result_ganji = loadModel(input_dict_data, model_path)
 
+    start11 = time.time()
     # result = []
     # # for i in [predict_result_ganji, predict_result_fangtianxia, predict_result_58]:
     #     try:

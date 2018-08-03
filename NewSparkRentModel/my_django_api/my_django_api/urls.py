@@ -21,6 +21,6 @@ from my_django_api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('predict_rent_price/', views.predict_rent_price,name = 'predict_rent_price'),
+    path('predict_rent_price', views.predict_rent_price,name = 'predict_rent_price'),
 ]
 
