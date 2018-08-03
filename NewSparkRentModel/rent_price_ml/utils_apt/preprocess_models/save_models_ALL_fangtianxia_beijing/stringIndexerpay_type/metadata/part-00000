@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.StringIndexer","timestamp":1529478708457,"sparkVersion":"2.1.1","uid":"StringIndexer_4fde90d0f1f5df242646","paramMap":{"inputCol":"pay_type","handleInvalid":"error","outputCol":"pay_typeIndex"}}

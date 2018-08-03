@@ -1,1 +1,0 @@
-{"class":"org.apache.spark.ml.feature.OneHotEncoder","timestamp":1530527259104,"sparkVersion":"2.1.1","uid":"OneHotEncoder_46acbdaa7f658d6b0efe","paramMap":{"dropLast":false,"outputCol":"districtVec","inputCol":"districtIndex"}}
